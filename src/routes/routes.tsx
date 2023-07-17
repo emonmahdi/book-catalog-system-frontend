@@ -26,7 +26,7 @@ const routes = createBrowserRouter([
       },
     ],
   },
-  /*  {
+  {
     path: "/login",
     element: <Login />,
   },
@@ -37,7 +37,7 @@ const routes = createBrowserRouter([
   {
     path: "*",
     element: <NotFound />,
-  }, */
+  },
 ]);
 
 export default routes;

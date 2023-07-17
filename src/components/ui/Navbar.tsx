@@ -16,7 +16,7 @@ export default function Navbar() {
             <a>Home</a>
           </li>
           <li>
-            <a>Books</a>
+            <a>All Books</a>
           </li>
         </ul>
         <div className="flex-none gap-2">
