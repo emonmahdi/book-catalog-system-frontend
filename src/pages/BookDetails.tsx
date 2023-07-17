@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { useParams } from "react-router-dom";
@@ -6,11 +8,13 @@ import { useEffect, useState } from "react";
 import { FiSend } from "react-icons/fi";
 
 import profile from "./../assets/images/avater.png";
+import { useSingleBookQuery } from "../redux/api/apiSlice";
 
 export default function BookDetails() {
   const { id } = useParams();
 
-  //! Temporary code, should be replaced with redux
+  const { data: product, isLoading, error } = useSingleBookQuery(id);
+  /* //! Temporary code, should be replaced with redux
   const [data, setData] = useState<IBooks[]>([]);
   useEffect(() => {
     fetch("../../public/books.json")
@@ -20,7 +24,7 @@ export default function BookDetails() {
 
   const product = data?.find((item) => item._id === Number(id));
   console.log(product);
-  //! Temporary code ends here
+  //! Temporary code ends here */
 
   return (
     <div>
