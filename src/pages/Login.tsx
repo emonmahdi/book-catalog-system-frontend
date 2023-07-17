@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import bg from "./../assets/images/bg-1.jpg";
 import { Link } from "react-router-dom";
 
@@ -67,3 +67,4 @@ export default function Login() {
     </div>
   );
 }
+ */
