@@ -1,4 +1,4 @@
-/* import bg from "./../assets/images/bg-2.jpg";
+import bg from "./../assets/images/bg-2.jpg";
 
 export default function Register() {
   return (
@@ -59,4 +59,3 @@ export default function Register() {
     </div>
   );
 }
- */
