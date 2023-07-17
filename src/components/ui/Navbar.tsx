@@ -12,12 +12,16 @@ export default function Navbar() {
           </Link>
         </div>
         <ul className="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box">
-          <li>
-            <a>Home</a>
-          </li>
-          <li>
-            <a>All Books</a>
-          </li>
+          <Link to="/">
+            <li>
+              <a>Home</a>
+            </li>
+          </Link>
+          <Link to="/all-books">
+            <li>
+              <a>All Books</a>
+            </li>
+          </Link>
         </ul>
         <div className="flex-none gap-2">
           <div className="form-control">

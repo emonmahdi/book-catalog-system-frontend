@@ -3,9 +3,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect, useState } from "react";
 import { IBooks } from "../types/globalTypes";
-import BookCard from "./ui/BookCard";
+import BookCard from "../components/ui/BookCard";
+import Navbar from "../components/ui/Navbar";
 
-export default function Books() {
+export default function AllBooks() {
   const [books, setBooks] = useState<IBooks[]>([]);
 
   useEffect(() => {
@@ -15,14 +16,16 @@ export default function Books() {
         setBooks(data);
       });
   }, []);
-
   return (
-    <div className="text-center py-8">
-      <h2 className="font-bold text-3xl">Our Books Catalog</h2>
-      <div className="grid grid-cols-12 gap-4 py-8 px-8">
-        {books?.map((book) => (
-          <BookCard book={book} key={book.title} />
-        ))}
+    <div>
+      <Navbar />
+      <div className="text-center py-8">
+        <h2 className="font-bold text-3xl">Our Books Catalog</h2>
+        <div className="grid grid-cols-12 gap-4 py-8 px-8">
+          {books?.map((book) => (
+            <BookCard book={book} key={book.title} />
+          ))}
+        </div>
       </div>
     </div>
   );

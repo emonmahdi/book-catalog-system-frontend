@@ -47,6 +47,10 @@ export default function BookDetails() {
             <span className="font-bold px-2">{product?.publication_date}</span>
           </p>
           <button className="btn btn-info">Add to cart</button>
+          <div className="">
+            <button className="btn btn-warning mr-4">Edit Book</button>
+            <button className="btn btn-error">Delete Book</button>
+          </div>
         </div>
       </div>
       <div className="flex max-w-12xl mx-auto items-center border-gray-300 pb-8 px-32 pt-4">
