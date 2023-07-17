@@ -47,12 +47,12 @@ export default function Navbar() {
                   <span className="badge">New</span>
                 </a>
               </li>
-              <Link to="login">
+              <Link to="/login">
                 <li>
                   <a>Login</a>
                 </li>
               </Link>
-              <Link to="register">
+              <Link to="/register">
                 <li>
                   <a>Register</a>
                 </li>
