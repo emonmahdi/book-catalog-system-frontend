@@ -9,7 +9,7 @@ interface iProps {
 export default function BookCard({ book }: iProps) {
   const { _id, title, img, author, genre, publication_date } = book;
   return (
-    <div className="col-span-4 mb-8">
+    <div className="mb-8">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <Link to={`/book-details/${_id}`}>
           <figure>
