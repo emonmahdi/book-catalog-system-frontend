@@ -1,8 +1,24 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from "react";
 import { Link } from "react-router-dom";
 import profileImg from "../../assets/images/avater.png";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { signOut } from "firebase/auth";
+import { auth } from "../../lib/firebase";
+import { setUser } from "../../redux/features/user/userSlice";
 
 export default function Navbar() {
+  const { user } = useAppSelector((state) => state.user);
+
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    console.log("log out");
+    signOut(auth).then(() => {
+      dispatch(setUser(null));
+    });
+  };
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -47,16 +63,27 @@ export default function Navbar() {
                   <span className="badge">New</span>
                 </a>
               </li>
-              <Link to="/login">
-                <li>
-                  <a>Login</a>
-                </li>
-              </Link>
-              <Link to="/register">
-                <li>
-                  <a>Register</a>
-                </li>
-              </Link>
+              {!user.email && (
+                <>
+                  <Link to="/login">
+                    <li>
+                      <a>Login</a>
+                    </li>
+                  </Link>
+                  <Link to="/register">
+                    <li>
+                      <a>Register</a>
+                    </li>
+                  </Link>
+                </>
+              )}
+              {user.email && (
+                <>
+                  <li onClick={handleLogout}>
+                    <a>Log out</a>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

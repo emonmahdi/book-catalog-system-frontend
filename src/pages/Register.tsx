@@ -1,6 +1,30 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { createUser } from "../redux/features/user/userSlice";
+import { useAppDispatch } from "../redux/hooks";
 import bg from "./../assets/images/bg-2.jpg";
+import { useForm } from "react-hook-form";
+
+interface SignupFormInputs {
+  email: string;
+  password: string;
+}
 
 export default function Register() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<SignupFormInputs>();
+
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: SignupFormInputs) => {
+    console.log(data);
+    dispatch(createUser({ email: data.email, password: data.password }));
+    reset();
+  };
   return (
     <div>
       <div
@@ -13,34 +37,43 @@ export default function Register() {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="email"
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="password"
-                  className="input input-bordered"
-                />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
+              <h2 className="font-bold text-center">Create An Account</h2>
+              <span className="text-center">
+                Enter your email and password to below account create
+              </span>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="grid gap-2">
+                  <div className="grid gap-1">
+                    <label className="sr-only" htmlFor="email">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      className="input input-bordered my-2"
+                      placeholder="name@example.com"
+                      type="email"
+                      autoCapitalize="none"
+                      autoComplete="email"
+                      autoCorrect="off"
+                      {...register("email", { required: "Email is required" })}
+                    />
+                    {errors.email && <p>{errors.email.message}</p>}
+                    <input
+                      id="password"
+                      className="input input-bordered my-2"
+                      placeholder="your password"
+                      type="password"
+                      autoCapitalize="none"
+                      autoCorrect="off"
+                      {...register("password", {
+                        required: "Password is required",
+                      })}
+                    />
+                    {errors.password && <p>{errors.password.message}</p>}
+                  </div>
+                  <button className="btn btn-primary">Create Account</button>
+                </div>
+              </form>
             </div>
           </div>
           <div

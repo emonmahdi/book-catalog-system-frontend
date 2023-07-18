@@ -1,8 +1,41 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from "react";
 import bg from "./../assets/images/bg-1.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { loginUser } from "../redux/features/user/userSlice";
+import { useEffect } from "react";
+
+interface LoginFormInputs {
+  email: string;
+  password: string;
+}
 
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<LoginFormInputs>();
+
+  const { user, isLoading } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
+
+  const onSubmit = (data: LoginFormInputs) => {
+    console.log(data);
+    dispatch(loginUser({ email: data.email, password: data.password }));
+    reset();
+  };
+  useEffect(() => {
+    if (user.email && !isLoading) {
+      navigate("/");
+    }
+  }, [user.email, isLoading]);
   return (
     <div>
       <div
@@ -26,40 +59,43 @@ export default function Login() {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="email"
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="password"
-                  className="input input-bordered"
-                />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
-                <h3>
-                  I have not an account! create Account
-                  <Link to="register" className="px-4 text-blue-600 underline">
-                    Register
-                  </Link>
-                </h3>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
+              <h2 className="font-bold text-center">Login Here</h2>
+              <span className="text-center">
+                Enter your email and password to login
+              </span>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="grid gap-2">
+                  <div className="grid gap-1">
+                    <label className="sr-only" htmlFor="email">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      className="input input-bordered my-2"
+                      placeholder="name@example.com"
+                      type="email"
+                      autoCapitalize="none"
+                      autoComplete="email"
+                      autoCorrect="off"
+                      {...register("email", { required: "Email is required" })}
+                    />
+                    {errors.email && <p>{errors.email.message}</p>}
+                    <input
+                      id="password"
+                      className="input input-bordered my-2"
+                      placeholder="your password"
+                      type="password"
+                      autoCapitalize="none"
+                      autoCorrect="off"
+                      {...register("password", {
+                        required: "Password is required",
+                      })}
+                    />
+                    {errors.password && <p>{errors.password.message}</p>}
+                  </div>
+                  <button className="btn btn-primary">Login</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
