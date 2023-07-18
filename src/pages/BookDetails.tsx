@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IBooks } from "../types/globalTypes";
 import { useEffect, useState } from "react";
 import { FiSend } from "react-icons/fi";
@@ -52,7 +53,9 @@ export default function BookDetails() {
           </p>
           <button className="btn btn-info">Add to cart</button>
           <div className="">
-            <button className="btn btn-warning mr-4">Edit Book</button>
+            <Link to={`/edit-book/${product?._id}`}>
+              <button className="btn btn-warning mr-4">Edit Book</button>
+            </Link>
             <button className="btn btn-error">Delete Book</button>
           </div>
         </div>
