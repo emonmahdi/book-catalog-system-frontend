@@ -47,6 +47,8 @@
 import { useState } from "react";
 import Navbar from "../components/ui/Navbar";
 import { useAddBookMutation } from "../redux/api/apiSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddNewBook() {
   interface Book {
@@ -80,6 +82,7 @@ export default function AddNewBook() {
     event.preventDefault();
     addBook(formData);
     console.log(formData);
+    toast("Add new book successfully");
     setFormData({
       title: "",
       author: "",
@@ -92,6 +95,7 @@ export default function AddNewBook() {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <div>
         <h3 className="text-center text-xl text-purple-600 font-bold">
           Add New Book

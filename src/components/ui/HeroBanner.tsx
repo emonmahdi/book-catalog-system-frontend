@@ -30,7 +30,7 @@ export default function HeroBanner() {
             </p>
             <button className="btn btn-primary">All Books</button>
             {/* redux */}
-            <div className="mt-12 py-12">
+            {/* <div className="mt-12 py-12">
               <button
                 onClick={() => dispatch(increment())}
                 className="btn btn-primary"
@@ -46,7 +46,7 @@ export default function HeroBanner() {
               >
                 Decrement
               </button>
-            </div>
+            </div> */}
             {/* end */}
           </div>
         </div>
