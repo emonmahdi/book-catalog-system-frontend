@@ -3,12 +3,16 @@ import counterReducer from "./features/counter/counterSlice";
 import { api } from "./api/apiSlice";
 import userReducer from "./features/user/userSlice";
 import searchReducer from "./features/search/serachSlice";
+import bookReducer from "./features/book/bookSlice";
+import addbookReducer from "./features/book/addbookSlice";
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
     user: userReducer,
     search: searchReducer,
+    book: bookReducer,
+    addbook: addbookReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

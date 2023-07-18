@@ -5,4 +5,5 @@ export interface IBooks {
   author: string;
   genre: string;
   publication_date: string;
+  reviews?: string[];
 }

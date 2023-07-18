@@ -6,6 +6,7 @@
 import { IBooks } from "../types/globalTypes";
 import BookCard from "./ui/BookCard";
 import { useGetBooksQuery } from "../redux/api/apiSlice";
+import HomeBookCard from "./ui/HomeBookCard";
 
 export default function Books() {
   /* const [books, setBooks] = useState<IBooks[]>([]);
@@ -28,7 +29,7 @@ export default function Books() {
       <h2 className="font-bold text-3xl">Our Books Catalog</h2>
       <div className="grid grid-cols-12 gap-4 py-8 px-8">
         {data?.data?.map((book: IBooks) => (
-          <BookCard book={book} key={book.title} />
+          <HomeBookCard book={book} key={book.title} />
         ))}
       </div>
     </div>
