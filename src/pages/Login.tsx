@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React from "react";
 import bg from "./../assets/images/bg-1.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { loginUser } from "../redux/features/user/userSlice";
@@ -24,7 +27,10 @@ export default function Login() {
   const { user, isLoading } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
@@ -33,7 +39,7 @@ export default function Login() {
   };
   useEffect(() => {
     if (user.email && !isLoading) {
-      navigate("/");
+      navigate(from, { replace: true });
     }
   }, [user.email, isLoading]);
   return (
