@@ -60,16 +60,35 @@ export default function AddNewBook() {
     reviews: string[];
   }
 
+  const currentDate = new Date();
+
+  // Extract the relevant date components
+  const year = currentDate.getFullYear(); // e.g., 2023
+  const month = currentDate.getMonth() + 1; // Note: months are zero-indexed, so we add 1
+  const day = currentDate.getDate(); // e.g., 19
+
+  // Create a formatted date string in the desired format (YYYY-MM-DD)
+  const formattedDate = `${year}-${month.toString().padStart(2, "0")}-${day
+    .toString()
+    .padStart(2, "0")}`;
+
+  console.log(formattedDate);
+
   const [formData, setFormData] = useState<Book>({
     title: "",
     author: "",
     img: "",
     genre: "",
-    publication_date: "",
+    publication_date: formattedDate,
     reviews: [],
   });
 
   const [addBook, { isLoading }] = useAddBookMutation();
+
+  // const date = new Date();
+  // console.log(date);
+  // Create a new Date object representing the current date and time
+  // Output will be in the format 'YYYY-MM-DD'
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -151,7 +170,7 @@ export default function AddNewBook() {
               required
             />
           </div>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label>Publication Date:</label>
             <input
               type="date"
@@ -161,7 +180,7 @@ export default function AddNewBook() {
               onChange={handleChange}
               required
             />
-          </div>
+          </div> */}
           <button type="submit" className="btn btn-primary">
             Submit
           </button>

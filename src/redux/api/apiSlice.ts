@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IBooks } from "../../types/globalTypes";
@@ -19,7 +20,19 @@ export const api = createApi({
         body: data,
       }),
     }),
+    updateBook: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/book/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useSingleBookQuery, useAddBookMutation } = api;
+export const {
+  useGetBooksQuery,
+  useSingleBookQuery,
+  useAddBookMutation,
+  useUpdateBookMutation,
+} = api;
