@@ -3,29 +3,39 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { IBooks } from "../types/globalTypes";
 import { useEffect, useState } from "react";
 import { FiSend } from "react-icons/fi";
 
 import profile from "./../assets/images/avater.png";
-import { useSingleBookQuery } from "../redux/api/apiSlice";
+import {
+  useDeleteBookMutation,
+  useSingleBookQuery,
+} from "../redux/api/apiSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { deleteBookLocally } from "../redux/features/book/dbookSlice";
 
 export default function BookDetails() {
   const { id } = useParams();
+  const dispatch = useAppDispatch();
 
-  const { data: product, isLoading, error } = useSingleBookQuery(id);
-  /* //! Temporary code, should be replaced with redux
-  const [data, setData] = useState<IBooks[]>([]);
-  useEffect(() => {
-    fetch("../../public/books.json")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+  const { books } = useAppSelector((state) => state.dbook);
 
-  const product = data?.find((item) => item._id === Number(id));
-  console.log(product);
-  //! Temporary code ends here */
+  const [deleteBook, { isLoading }] = useDeleteBookMutation();
+
+  const { data: product, isLoading: loading, error } = useSingleBookQuery(id);
+
+  const navigate = useNavigate();
+
+  const handleDelete = (id: number) => {
+    const confirmed = window.confirm("Are you sure delete book");
+    if (confirmed) {
+      deleteBook(id);
+      dispatch(deleteBookLocally(id));
+      navigate("/");
+    }
+  };
 
   return (
     <div>
@@ -56,7 +66,12 @@ export default function BookDetails() {
             <Link to={`/edit-book/${product?._id}`}>
               <button className="btn btn-warning mr-4">Edit Book</button>
             </Link>
-            <button className="btn btn-error">Delete Book</button>
+            <button
+              onClick={() => handleDelete(product?._id)}
+              className="btn btn-error"
+            >
+              Delete Book
+            </button>
           </div>
         </div>
       </div>
