@@ -5,10 +5,12 @@ import { IBooks } from "../../types/globalTypes";
 
 export const api = createApi({
   reducerPath: "books",
+  tagTypes: ["books"],
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
   endpoints: (builder) => ({
     getBooks: builder.query({
       query: () => `/books`,
+      providesTags: ["books"],
     }),
     singleBook: builder.query({
       query: (id) => `/book/${id}`,
@@ -19,6 +21,7 @@ export const api = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["books"],
     }),
     updateBook: builder.mutation({
       query: ({ id, data }) => ({
@@ -32,6 +35,7 @@ export const api = createApi({
         url: `/book/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["books"],
     }),
   }),
 });
