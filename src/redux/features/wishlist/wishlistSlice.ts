@@ -15,11 +15,24 @@ const wishlistSlice = createSlice({
   initialState,
   reducers: {
     addToWishlist: (state, action: PayloadAction<IBooks>) => {
-      state.books.push(action.payload);
+      const existing = state.books.find(
+        (book) => book._id === action.payload._id
+      );
+
+      if (existing) {
+        console.log("Already exist");
+      } else {
+        state.books.push(action.payload);
+      }
+    },
+    finishWishlist: (state, action: PayloadAction<IBooks>) => {
+      state.books = state.books.filter(
+        (book) => book._id !== action.payload._id
+      );
     },
   },
 });
 
-export const { addToWishlist } = wishlistSlice.actions;
+export const { addToWishlist, finishWishlist } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;

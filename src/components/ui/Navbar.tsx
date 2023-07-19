@@ -7,9 +7,12 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { setUser } from "../../redux/features/user/userSlice";
 import { BsFillCartDashFill } from "react-icons/bs";
+import { finishWishlist } from "../../redux/features/wishlist/wishlistSlice";
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
+
+  const { books } = useAppSelector((state) => state.wishlist);
 
   const dispatch = useAppDispatch();
 
@@ -64,12 +67,45 @@ export default function Navbar() {
               <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
               <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                 {/* Sidebar content here */}
-                <li>
-                  <a>Sidebar Item 1</a>
-                </li>
-                <li>
-                  <a>Sidebar Item 2</a>
-                </li>
+                {/* <li>
+                      <a> {book.title}</a>
+                    </li> */}
+                {/*  <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <img src={book.img} className="w-[50px] mr-2" alt="" />
+                      </div>
+                      <div>
+                        <p className="font-bold ml-4">{book.title}</p>
+                      </div>
+                      <div>
+                        <button className="btn btn-success btn-sm ">
+                          Finish Reading
+                        </button>
+                      </div>
+                    </div> */}
+                <table className="table-auto">
+                  <tbody>
+                    {books.map((book) => (
+                      <>
+                        <tr className="py-4 text-left my-4 mb-4 border border-b-2">
+                          <td>
+                            <img src={book.img} className="w-[45px]" alt="" />
+                          </td>
+                          <td className="font-bold ml-4">{book.title}</td>
+                          <td>
+                            <button
+                              onClick={() => dispatch(finishWishlist(book))}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Finish Read
+                            </button>
+                          </td>
+                        </tr>
+                      </>
+                    ))}
+                    <hr />
+                  </tbody>
+                </table>
               </ul>
             </div>
           </div>

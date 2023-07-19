@@ -15,12 +15,15 @@ import {
 } from "../redux/api/apiSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { deleteBookLocally } from "../redux/features/book/dbookSlice";
+import { finishWishlist } from "../redux/features/wishlist/wishlistSlice";
 
 export default function BookDetails() {
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
   const { books } = useAppSelector((state) => state.dbook);
+
+  const { books: book } = useAppSelector((state) => state.wishlist);
 
   const [deleteBook, { isLoading }] = useDeleteBookMutation();
 
@@ -61,7 +64,12 @@ export default function BookDetails() {
             Publication Date:{" "}
             <span className="font-bold px-2">{product?.publication_date}</span>
           </p>
-          <button className="btn btn-info">Add to cart</button>
+          <button
+            onClick={() => dispatch(finishWishlist(product))}
+            className="btn btn-info"
+          >
+            Add to Wishlist
+          </button>
           <div className="">
             <Link to={`/edit-book/${product?._id}`}>
               <button className="btn btn-warning mr-4">Edit Book</button>
