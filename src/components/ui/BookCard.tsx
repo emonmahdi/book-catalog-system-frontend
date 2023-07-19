@@ -36,7 +36,7 @@ export default function BookCard({ book }: iProps) {
           <div className="card-actions justify-center">
             <Link to={`/book-details/${_id}`}>
               {" "}
-              <button className="btn btn-primary">Details</button>{" "}
+              <button className="btn btn-primary">Add Books</button>{" "}
             </Link>
           </div>
         </div>

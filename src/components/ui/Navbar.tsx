@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { setUser } from "../../redux/features/user/userSlice";
+import { BsFillCartDashFill } from "react-icons/bs";
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
@@ -40,13 +41,39 @@ export default function Navbar() {
           </Link>
         </ul>
         <div className="flex-none gap-2">
-          <div className="form-control">
+          {/* <div className="form-control">
             <input
               type="text"
               placeholder="Search"
               className="input input-bordered w-24 md:w-auto"
             />
+          </div> */}
+
+          {/* ==== */}
+          <div className="drawer drawer-end z-10">
+            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content px-4 text-2xl">
+              <label
+                htmlFor="my-drawer-4"
+                className="drawer-button cursor-pointer"
+              >
+                <BsFillCartDashFill />
+              </label>
+            </div>
+            <div className="drawer-side">
+              <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+              <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                {/* Sidebar content here */}
+                <li>
+                  <a>Sidebar Item 1</a>
+                </li>
+                <li>
+                  <a>Sidebar Item 2</a>
+                </li>
+              </ul>
+            </div>
           </div>
+          {/* ==== */}
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">

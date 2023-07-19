@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import React from "react";
 import { IBooks } from "../../types/globalTypes";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
+import { addToWishlist } from "../../redux/features/wishlist/wishlistSlice";
 
 interface iProps {
   book: IBooks;
@@ -8,6 +11,13 @@ interface iProps {
 
 export default function HomeBookCard({ book }: iProps) {
   const { _id, title, img, author, genre, publication_date } = book;
+
+  const dispatch = useAppDispatch();
+
+  const handleWishlist = (book: IBooks) => {
+    dispatch(addToWishlist(book));
+  };
+
   return (
     <div className="col-span-4 mb-8">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -34,10 +44,12 @@ export default function HomeBookCard({ book }: iProps) {
             <span className="text-blue-400">{publication_date}</span>
           </p>
           <div className="card-actions justify-center">
-            <Link to={`/book-details/${_id}`}>
-              {" "}
-              <button className="btn btn-primary">Details</button>{" "}
-            </Link>
+            <button
+              onClick={() => handleWishlist(book)}
+              className="btn btn-primary"
+            >
+              Add Book
+            </button>
           </div>
         </div>
       </div>

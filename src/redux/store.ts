@@ -6,6 +6,7 @@ import searchReducer from "./features/search/serachSlice";
 import bookReducer from "./features/book/bookSlice";
 import addbookReducer from "./features/book/addbookSlice";
 import dBookReducer from "./features/book/dbookSlice";
+import wishlistReducer from "./features/wishlist/wishlistSlice";
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     user: userReducer,
     search: searchReducer,
     book: bookReducer,
+    wishlist: wishlistReducer,
     addbook: addbookReducer,
     dbook: dBookReducer,
     [api.reducerPath]: api.reducer,
