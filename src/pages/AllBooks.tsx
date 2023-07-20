@@ -4,22 +4,18 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useEffect, useState } from "react";
+
 import { IBooks } from "../types/globalTypes";
 import BookCard from "../components/ui/BookCard";
 import Navbar from "../components/ui/Navbar";
-import { useGetAllBooksQuery, useGetBooksQuery } from "../redux/api/apiSlice";
+import { useGetAllBooksQuery } from "../redux/api/apiSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setSearchTerm } from "../redux/features/search/serachSlice";
-import {
-  setGenreFilter,
-  setPublicationYearFilter,
-} from "../redux/features/book/bookSlice";
 import { Link } from "react-router-dom";
 
 export default function AllBooks() {
   const { data, isLoading, error } = useGetAllBooksQuery(undefined);
-  console.log(data?.data?.length);
+  console.log(isLoading, error);
 
   const searchTerm = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();

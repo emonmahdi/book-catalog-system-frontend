@@ -84,7 +84,7 @@ export default function AddNewBook() {
   });
 
   const [addBook, { isLoading }] = useAddBookMutation();
-
+  console.log(isLoading)
   // const date = new Date();
   // console.log(date);
   // Create a new Date object representing the current date and time

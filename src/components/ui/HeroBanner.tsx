@@ -1,15 +1,8 @@
-import React from "react";
-import bg from "../../assets/images/bg-1.jpg";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import {
-  decrement,
-  increment,
-} from "../../redux/features/counter/counterSlice";
+ 
+import bg from "../../assets/images/bg-1.jpg"; 
 import { Link } from "react-router-dom";
 
-export default function HeroBanner() {
-  const { count } = useAppSelector((state) => state.counter);
-  const dispatch = useAppDispatch();
+export default function HeroBanner() { 
   return (
     <div>
       <div

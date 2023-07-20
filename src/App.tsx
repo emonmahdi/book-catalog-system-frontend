@@ -1,7 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import MainLayout from "./layouts/MainLayout";
-import { auth } from "./lib/firebase";
-import Home from "./pages/Home";
+import { auth } from "./lib/firebase"; 
 import { useAppDispatch } from "./redux/hooks";
 import { setLoading, setUser } from "./redux/features/user/userSlice";
 import { useEffect } from "react";

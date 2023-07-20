@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React from "react";
+
 import { Link } from "react-router-dom";
 import profileImg from "../../assets/images/avater.png";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";

@@ -1,13 +1,9 @@
-import React from "react";
 import { IBooks } from "../../types/globalTypes";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  addToWishlist,
-  finishWishlist,
-} from "../../redux/features/wishlist/wishlistSlice";
+import { addToWishlist } from "../../redux/features/wishlist/wishlistSlice";
 
 interface iProps {
   book: IBooks;
@@ -17,6 +13,7 @@ export default function BookCard({ book }: iProps) {
   const { _id, title, img, author, genre, publication_date } = book;
 
   const { books } = useAppSelector((state) => state.wishlist);
+  console.log(books);
 
   const dispatch = useAppDispatch();
 

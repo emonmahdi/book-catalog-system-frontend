@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import React from "react";
+
 import { IBooks } from "../../types/globalTypes";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { addToWishlist } from "../../redux/features/wishlist/wishlistSlice";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface iProps {

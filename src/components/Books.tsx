@@ -3,8 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { IBooks } from "../types/globalTypes";
-import BookCard from "./ui/BookCard";
+import { IBooks } from "../types/globalTypes"; 
 import { useGetBooksQuery } from "../redux/api/apiSlice";
 import HomeBookCard from "./ui/HomeBookCard";
 
