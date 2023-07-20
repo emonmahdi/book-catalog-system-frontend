@@ -1,16 +1,12 @@
 ### Book Catalog system App
 
-### Frontend Live Link:
-
-`www.sample.come`
-
-### Backend Code Live Link:
-
-`www.sample.come`
+### Frontend Live Link: https://serene-biscochitos-74650d.netlify.app/
 
 ### Frontend Github Repository Link: https://github.com/emonmahdi/book-catalog-system-frontend
 
 ### Backend Github Repository Link: https://github.com/emonmahdi/book-catalog-system-backend
+
+### Backend Code Live Link: https://book-catalog-server-chi.vercel.app/
 
 ### Features the app:
 
