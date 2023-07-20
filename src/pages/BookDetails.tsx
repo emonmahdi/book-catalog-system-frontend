@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -11,6 +12,8 @@ import { FiSend } from "react-icons/fi";
 import profile from "./../assets/images/avater.png";
 import {
   useDeleteBookMutation,
+  useGetReviewsQuery,
+  usePostReviewMutation,
   useSingleBookQuery,
 } from "../redux/api/apiSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -19,7 +22,13 @@ import { finishWishlist } from "../redux/features/wishlist/wishlistSlice";
 
 export default function BookDetails() {
   const { id } = useParams();
+  const [inputValue, setInputValue] = useState<string>("");
   const dispatch = useAppDispatch();
+
+  const [postReview, { isLoading: reviewLoading }] = usePostReviewMutation();
+  const { data } = useGetReviewsQuery(id);
+
+  console.log(reviewLoading);
 
   const { books } = useAppSelector((state) => state.dbook);
 
@@ -38,6 +47,19 @@ export default function BookDetails() {
       dispatch(deleteBookLocally(id));
       navigate("/");
     }
+  };
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    console.log(inputValue);
+    const options = {
+      id: id,
+      data: { review: inputValue },
+    };
+
+    postReview(options);
+
+    setInputValue("");
   };
 
   return (
@@ -84,21 +106,32 @@ export default function BookDetails() {
         </div>
       </div>
       <div className="flex max-w-12xl mx-auto items-center border-gray-300 pb-8 px-32 pt-4">
-        <textarea
-          className="textarea textarea-primary w-[75%]"
-          placeholder="Review"
-        ></textarea>
-        <p className="bg-primary p-4 rounded-lg ml-2 cursor-pointer">
-          <FiSend className="text-white" />
-        </p>
+        <form onSubmit={handleSubmit} className="w-[75%] flex items-center">
+          <textarea
+            className="textarea textarea-primary w-[75%]"
+            placeholder="Review"
+            onChange={(e) => setInputValue(e.target.value)}
+            value={inputValue}
+          ></textarea>
+          <button
+            type="submit"
+            className="btn bg-primary p-4 rounded-lg ml-2 cursor-pointer"
+          >
+            <FiSend className="text-white" />
+          </button>
+        </form>
       </div>
       <div className="flex max-w-12xl mx-auto items-center border-gray-300 pb-8 px-32 pt-4">
-        <div className="w-10 rounded-full mr-4">
-          <img src={profile} />
-        </div>
-        <div>
-          <p>Awesome book</p>
-        </div>
+        {data?.reviews?.map((review: string) => (
+          <>
+            <div className="w-10 rounded-full mr-4">
+              <img src={profile} />
+            </div>
+            <div>
+              <p>{review}</p>
+            </div>
+          </>
+        ))}
       </div>
     </div>
   );

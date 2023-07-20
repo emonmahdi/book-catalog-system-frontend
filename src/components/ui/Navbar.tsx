@@ -66,23 +66,6 @@ export default function Navbar() {
             <div className="drawer-side">
               <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
               <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                {/* Sidebar content here */}
-                {/* <li>
-                      <a> {book.title}</a>
-                    </li> */}
-                {/*  <div className="flex items-center justify-between mb-8">
-                      <div>
-                        <img src={book.img} className="w-[50px] mr-2" alt="" />
-                      </div>
-                      <div>
-                        <p className="font-bold ml-4">{book.title}</p>
-                      </div>
-                      <div>
-                        <button className="btn btn-success btn-sm ">
-                          Finish Reading
-                        </button>
-                      </div>
-                    </div> */}
                 <table className="table-auto">
                   <tbody>
                     {books.map((book) => (
