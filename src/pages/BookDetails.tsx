@@ -4,8 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { IBooks } from "../types/globalTypes";
+import { Link, useNavigate, useParams } from "react-router-dom"; 
 import { useEffect, useState } from "react";
 import { FiSend } from "react-icons/fi";
 
@@ -18,10 +17,7 @@ import {
 } from "../redux/api/apiSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { deleteBookLocally } from "../redux/features/book/dbookSlice";
-import {
-  addToWishlist,
-  finishWishlist,
-} from "../redux/features/wishlist/wishlistSlice";
+ 
 
 export default function BookDetails() {
   const { id } = useParams();
@@ -34,12 +30,18 @@ export default function BookDetails() {
   console.log(reviewLoading);
 
   const { books } = useAppSelector((state) => state.dbook);
+  console.log(books)
 
   const { books: book } = useAppSelector((state) => state.wishlist);
+  console.log(book)
 
   const [deleteBook, { isLoading }] = useDeleteBookMutation();
+  console.log(isLoading)
 
-  const { data: product, isLoading: loading, error } = useSingleBookQuery(id);
+
+  const { data: product, isLoading: loading } = useSingleBookQuery(id);
+  console.log(loading)
+
 
   const navigate = useNavigate();
 

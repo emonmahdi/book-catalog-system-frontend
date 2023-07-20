@@ -1,16 +1,16 @@
 ### Book Catalog system App
 
-### Front end live site link:
+### Frontend Live Link:
 
 `www.sample.come`
 
-### Backend live site link:
+### Backend Code Live Link:
 
 `www.sample.come`
 
-### Backend code link:
+### Frontend Github Repository Link: https://github.com/emonmahdi/book-catalog-system-frontend
 
-`www.sample.come`
+### Backend Github Repository Link: https://github.com/emonmahdi/book-catalog-system-backend
 
 ### Features the app:
 
@@ -24,8 +24,6 @@
 - Finish the wishlist implement
 - Review add authenticate user and show review particular book
 
-
-
 ### Using languages and tools
 
 - React, typescript with vite
@@ -37,4 +35,3 @@
 - Daisy UI
 - Tailwind Css
 - Firebase Authentication
- 

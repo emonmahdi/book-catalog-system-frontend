@@ -8,7 +8,7 @@ import {
   useUpdateBookMutation,
 } from "../redux/api/apiSlice";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface Book {
@@ -48,7 +48,9 @@ export default function EditBook() {
     reviews: [],
   });
 
-  const { data: product, isLoading, error } = useSingleBookQuery(id);
+  console.log(formData, setFormData);
+
+  const { data: product } = useSingleBookQuery(id);
   console.log(product);
 
   const [title, setTitle] = useState(product?.title || "");

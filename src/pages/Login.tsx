@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React from "react";
 import bg from "./../assets/images/bg-1.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -100,6 +99,11 @@ export default function Login() {
                     {errors.password && <p>{errors.password.message}</p>}
                   </div>
                   <button className="btn btn-primary">Login</button>
+                  <br />
+                  <Link to="/" className="btn btn-info">
+                    {" "}
+                    Go To Home
+                  </Link>
                 </div>
               </form>
             </div>

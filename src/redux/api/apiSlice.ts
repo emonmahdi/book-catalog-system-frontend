@@ -6,7 +6,9 @@ import { IBooks } from "../../types/globalTypes";
 export const api = createApi({
   reducerPath: "books",
   tagTypes: ["books", "reviews"],
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://book-catalog-server-chi.vercel.app/",
+  }),
   endpoints: (builder) => ({
     getBooks: builder.query({
       query: () => `/books`,

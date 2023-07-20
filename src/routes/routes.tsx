@@ -4,7 +4,6 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
-import Books from "../components/Books";
 import BookDetails from "../pages/BookDetails";
 import AllBooks from "../pages/AllBooks";
 import PrivateRoute from "./PrivateRoute";

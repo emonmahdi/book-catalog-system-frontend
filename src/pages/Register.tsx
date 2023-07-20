@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
+import { Link } from "react-router-dom";
 import { createUser } from "../redux/features/user/userSlice";
 import { useAppDispatch } from "../redux/hooks";
 import bg from "./../assets/images/bg-2.jpg";
@@ -72,6 +73,11 @@ export default function Register() {
                     {errors.password && <p>{errors.password.message}</p>}
                   </div>
                   <button className="btn btn-primary">Create Account</button>
+                  <br />
+                  <Link to="/" className="btn btn-info">
+                    {" "}
+                    Go To Home
+                  </Link>
                 </div>
               </form>
             </div>
