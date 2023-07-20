@@ -67,7 +67,7 @@ export default function Navbar() {
               <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
               <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                 <table className="table-auto">
-                  <tbody>
+                  <tbody className="mb-4">
                     {books.map((book) => (
                       <>
                         <tr className="py-4 text-left my-4 mb-4 border border-b-2">

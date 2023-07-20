@@ -2,7 +2,12 @@ import React from "react";
 import { IBooks } from "../../types/globalTypes";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { finishWishlist } from "../../redux/features/wishlist/wishlistSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  addToWishlist,
+  finishWishlist,
+} from "../../redux/features/wishlist/wishlistSlice";
 
 interface iProps {
   book: IBooks;
@@ -14,6 +19,11 @@ export default function BookCard({ book }: iProps) {
   const { books } = useAppSelector((state) => state.wishlist);
 
   const dispatch = useAppDispatch();
+
+  const handleWishlist = (book: IBooks) => {
+    dispatch(addToWishlist(book));
+    toast("Add book wishlist!");
+  };
 
   return (
     <div className="mb-8">
@@ -42,7 +52,7 @@ export default function BookCard({ book }: iProps) {
           </p>
           <div className="card-actions justify-center">
             <button
-              onClick={() => dispatch(finishWishlist(book))}
+              onClick={() => handleWishlist(book)}
               className="btn btn-primary"
             >
               Add Wishlist

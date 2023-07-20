@@ -5,6 +5,7 @@ import {
   decrement,
   increment,
 } from "../../redux/features/counter/counterSlice";
+import { Link } from "react-router-dom";
 
 export default function HeroBanner() {
   const { count } = useAppSelector((state) => state.counter);
@@ -28,7 +29,10 @@ export default function HeroBanner() {
               There are lots of book here. You can choose any kind of book and
               read. Every latest book available ours.
             </p>
-            <button className="btn btn-primary">All Books</button>
+            <Link to="/all-books">
+              <button className="btn btn-primary">All Books</button>
+            </Link>
+
             {/* redux */}
             {/* <div className="mt-12 py-12">
               <button

@@ -9,15 +9,6 @@ import { useGetBooksQuery } from "../redux/api/apiSlice";
 import HomeBookCard from "./ui/HomeBookCard";
 
 export default function Books() {
-  /* const [books, setBooks] = useState<IBooks[]>([]);
-
-  useEffect(() => {
-    fetch("./books.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data);
-      });
-  }, []); */
   const { data, isLoading, error } = useGetBooksQuery(undefined);
 
   console.log(data);
