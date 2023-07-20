@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../redux/features/user/userSlice";
 import { useAppDispatch } from "../redux/hooks";
 import bg from "./../assets/images/bg-2.jpg";
@@ -20,10 +20,12 @@ export default function Register() {
   } = useForm<SignupFormInputs>();
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (data: SignupFormInputs) => {
     console.log(data);
     dispatch(createUser({ email: data.email, password: data.password }));
+    navigate("/");
     reset();
   };
   return (
@@ -73,6 +75,15 @@ export default function Register() {
                     {errors.password && <p>{errors.password.message}</p>}
                   </div>
                   <button className="btn btn-primary">Create Account</button>
+                  <p className="text-center">
+                    Already I have a account <br />
+                    <Link
+                      to="/login"
+                      className="underline text-blue-600 font-bold"
+                    >
+                      Login
+                    </Link>{" "}
+                  </p>
                   <br />
                   <Link to="/" className="btn btn-info">
                     {" "}

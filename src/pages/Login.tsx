@@ -99,6 +99,15 @@ export default function Login() {
                     {errors.password && <p>{errors.password.message}</p>}
                   </div>
                   <button className="btn btn-primary">Login</button>
+                  <p className="text-center">
+                    If you do not have a account please <br />
+                    <Link
+                      to="/register"
+                      className="underline text-blue-600 font-bold"
+                    >
+                      Create Account
+                    </Link>{" "}
+                  </p>
                   <br />
                   <Link to="/" className="btn btn-info">
                     {" "}

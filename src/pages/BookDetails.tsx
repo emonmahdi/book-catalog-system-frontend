@@ -117,18 +117,18 @@ export default function BookDetails() {
           </button>
         </form>
       </div>
-      <div className="flex max-w-12xl mx-auto items-center border-gray-300 pb-8 px-32 pt-4">
-        {data?.reviews?.map((review: string) => (
-          <>
+      {data?.reviews?.map((review: string) => (
+        <>
+          <div className="flex max-w-12xl mx-auto items-center border-gray-300 pb-4 px-32 pt-1">
             <div className="w-10 rounded-full mr-4">
               <img src={profile} />
             </div>
             <div>
               <p>{review}</p>
             </div>
-          </>
-        ))}
-      </div>
+          </div>
+        </>
+      ))}
     </div>
   );
 }
