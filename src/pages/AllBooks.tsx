@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { IBooks } from "../types/globalTypes";
 import BookCard from "../components/ui/BookCard";
 import Navbar from "../components/ui/Navbar";
-import { useGetBooksQuery } from "../redux/api/apiSlice";
+import { useGetAllBooksQuery, useGetBooksQuery } from "../redux/api/apiSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setSearchTerm } from "../redux/features/search/serachSlice";
 import {
@@ -18,25 +18,11 @@ import {
 import { Link } from "react-router-dom";
 
 export default function AllBooks() {
-  /* const [books, setBooks] = useState<IBooks[]>([]);
-
-  useEffect(() => {
-    fetch("./books.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data);
-      });
-  }, []); */
-
-  const { data, isLoading, error } = useGetBooksQuery(undefined);
+  const { data, isLoading, error } = useGetAllBooksQuery(undefined);
+  console.log(data?.data?.length);
 
   const searchTerm = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
-
-  const handleSlider = (value: number[]) => {
-    // dispatch(setPriceRange(value[0]));
-    console.log("change range");
-  };
 
   const handleSearchChange = (e: { target: { value: any } }) => {
     const searchTerm = e.target.value;
@@ -66,6 +52,9 @@ export default function AllBooks() {
       <Navbar />
       <div className="grid grid-cols-12 max-w-7xl mx-auto relative mt-4">
         <div className="col-span-3 z mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]">
+          <h2 className="text-2xl text-secondary text-center">
+            Total Book : {data?.data?.length}
+          </h2>
           <div className="text-center">
             <Link to="/add-new-book">
               <button className="btn btn-primary">Add New Book</button>
@@ -83,26 +72,7 @@ export default function AllBooks() {
                 onChange={handleSearchChange}
               />
             </div>
-            {/* Filter area */}
-
-            {/* <h1 className="text-2xl uppercase">Availability</h1> */}
-            {/* <div className="flex items-center space-x-2 mt-3">
-              <input
-                type="range"
-                min={0}
-                max="100"
-                value="40"
-                className="range"
-              />
-            </div> */}
           </div>
-          {/* <div className="space-y-3 ">
-            <h1 className="text-2xl uppercase">Price Range</h1>
-            <div className="max-w-xl"></div>
-            <div>From 0$ To $</div>
-          </div> */}
-
-          {/* end filtering */}
         </div>
         <div className="col-span-9 grid grid-cols-2 gap-10 pb-20">
           {filteredData?.map((book: IBooks) => (

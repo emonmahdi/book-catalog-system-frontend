@@ -12,8 +12,15 @@ export const api = createApi({
       query: () => `/books`,
       providesTags: ["books"],
     }),
+    getAllBooks: builder.query({
+      query: () => `/all-books`,
+      providesTags: ["books"],
+    }),
     singleBook: builder.query({
       query: (id) => `/book/${id}`,
+    }),
+    singleAllBook: builder.query({
+      query: (id) => `/all-book/${id}`,
     }),
     addBook: builder.mutation<IBooks, Partial<IBooks>>({
       query: (data) => ({
@@ -60,4 +67,6 @@ export const {
   useDeleteBookMutation,
   usePostReviewMutation,
   useGetReviewsQuery,
+  useGetAllBooksQuery,
+  useSingleAllBookQuery,
 } = api;
