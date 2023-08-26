@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/ui/Navbar";
 import {
   useSingleBookQuery,
@@ -22,6 +22,8 @@ interface Book {
 
 export default function EditBook() {
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const [updateBook, { isLoading: loading }] = useUpdateBookMutation();
   console.log(loading);
@@ -71,7 +73,12 @@ export default function EditBook() {
         reviews: [],
       },
     };
-    updateBook(options);
+    try {
+      updateBook(options);
+      navigate("/");
+    } catch (error) {
+      console.error("Error updating book:", error);
+    }
     toast("Edit book successfully!");
   };
 

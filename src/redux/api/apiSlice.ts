@@ -7,8 +7,7 @@ export const api = createApi({
   reducerPath: "books",
   tagTypes: ["books", "reviews"],
   baseQuery: fetchBaseQuery({
-    baseUrl:
-      "https://book-catalog-server-emonhowlader1997-gmailcom.vercel.app/",
+    baseUrl: "https://book-catalog-backend-server.vercel.app/",
   }),
   endpoints: (builder) => ({
     getBooks: builder.query({
@@ -16,14 +15,14 @@ export const api = createApi({
       providesTags: ["books"],
     }),
     getAllBooks: builder.query({
-      query: () => `/all-books`,
+      query: () => `/books`,
       providesTags: ["books"],
     }),
     singleBook: builder.query({
       query: (id) => `/book/${id}`,
     }),
     singleAllBook: builder.query({
-      query: (id) => `/all-book/${id}`,
+      query: (id) => `/book/${id}`,
     }),
     addBook: builder.mutation<IBooks, Partial<IBooks>>({
       query: (data) => ({
@@ -73,3 +72,5 @@ export const {
   useGetAllBooksQuery,
   useSingleAllBookQuery,
 } = api;
+
+// https://book-catalog-server-emonhowlader1997-gmailcom.vercel.app/

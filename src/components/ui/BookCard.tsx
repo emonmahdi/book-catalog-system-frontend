@@ -1,9 +1,9 @@
 import { IBooks } from "../../types/globalTypes";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { addToWishlist } from "../../redux/features/wishlist/wishlistSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { addToWishlist } from "../../redux/features/wishlist/wishlistSlice";
 
 interface iProps {
   book: IBooks;
