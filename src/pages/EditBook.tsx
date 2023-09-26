@@ -1,7 +1,10 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+// /* eslint-disable @typescript-eslint/no-floating-promises */
+// /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+// /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/ui/Navbar";
 import {
   useSingleBookQuery,
@@ -34,7 +37,7 @@ export default function EditBook() {
   const month = currentDate.getMonth() + 1; // Note: months are zero-indexed, so we add 1
   const day = currentDate.getDate(); // e.g., 19
 
-  // Create a formatted date string in the desired format (YYYY-MM-DD)
+  //   // Create a formatted date string in the desired format (YYYY-MM-DD)
   const formattedDate = `${year}-${month.toString().padStart(2, "0")}-${day
     .toString()
     .padStart(2, "0")}`;
@@ -53,28 +56,17 @@ export default function EditBook() {
   console.log(formData, setFormData);
 
   const { data: product } = useSingleBookQuery(id);
-  console.log(product);
-
-  const [title, setTitle] = useState(product?.title || "");
-  const [author, setAuthor] = useState(product?.author || "");
-  const [genre, setGenre] = useState(product?.genre || "");
-  const [img, setImg] = useState(product?.img || "");
+  // console.log(product);
 
   const handleSubmit = () => {
     console.log("edit");
-    const options = {
+    const bookData = {
       id: id,
-      data: {
-        title: title,
-        img: img,
-        author: author,
-        genre: genre,
-        publication_date: formattedDate,
-        reviews: [],
-      },
+      data: product,
     };
     try {
-      updateBook(options);
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      updateBook(bookData);
       navigate("/");
     } catch (error) {
       console.error("Error updating book:", error);
@@ -99,7 +91,6 @@ export default function EditBook() {
                 name="title"
                 defaultValue={product?.title}
                 placeholder="book title"
-                onChange={(e) => setTitle(e.target.value)}
                 required
               />
             </div>
@@ -111,7 +102,6 @@ export default function EditBook() {
                 name="author"
                 defaultValue={product?.author}
                 placeholder="Author name"
-                onChange={(e) => setAuthor(e.target.value)}
                 required
               />
             </div>
@@ -123,7 +113,6 @@ export default function EditBook() {
                 name="img"
                 defaultValue={product?.img}
                 placeholder="Image Link here"
-                onChange={(e) => setImg(e.target.value)}
                 required
               />
             </div>
@@ -135,7 +124,6 @@ export default function EditBook() {
                 name="genre"
                 defaultValue={product?.genre}
                 placeholder="Genre"
-                onChange={(e) => setGenre(e.target.value)}
                 required
               />
             </div>

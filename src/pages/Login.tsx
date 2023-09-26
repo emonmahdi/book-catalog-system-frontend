@@ -23,13 +23,15 @@ export default function Login() {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
-  const { user, isLoading } = useAppSelector((state) => state.user);
+  const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
-  const location = useLocation();
+  // const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location?.state?.from?.pathname || "/";
+  // const from = location?.state?.from?.pathname || "/";
+
+  const { state } = useLocation();
 
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
@@ -37,10 +39,18 @@ export default function Login() {
     reset();
   };
   useEffect(() => {
-    if (user.email && !isLoading) {
-      navigate(from, { replace: true });
+    if (user.email) {
+      navigate(state?.from ? state.from : "/", { replace: true });
     }
-  }, [user.email, isLoading]);
+    return () => {
+      reset();
+    };
+  }, [user.email, navigate]);
+  // useEffect(() => {
+  //   if (user.email && !isLoading) {
+  //     navigate(from, { replace: true });
+  //   }
+  // }, [user.email, isLoading]);
   return (
     <div>
       <div
