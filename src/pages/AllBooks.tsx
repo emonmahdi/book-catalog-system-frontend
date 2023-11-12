@@ -12,6 +12,7 @@ import { useGetAllBooksQuery } from "../redux/api/apiSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setSearchTerm } from "../redux/features/search/serachSlice";
 import { Link } from "react-router-dom";
+import PrimaryBtn from "../components/ui/PrimaryBtn";
 
 export default function AllBooks() {
   const { data, isLoading, error } = useGetAllBooksQuery(undefined);
@@ -47,17 +48,20 @@ export default function AllBooks() {
     <div>
       <Navbar />
       <div className="grid grid-cols-12 max-w-7xl mx-auto relative mt-4">
-        <div className="col-span-3 z mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]">
-          <h2 className="text-2xl text-secondary text-center">
+        <div
+          style={{ background: "#F5EBE6" }}
+          className="col-span-3 z mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]"
+        >
+          <h2 className="text-2xl text-center">
             Total Book : {data?.data?.length}
           </h2>
           <div className="text-center">
             <Link to="/add-new-book">
-              <button className="btn btn-primary">Add New Book</button>
+              <PrimaryBtn>Add New Book</PrimaryBtn>
             </Link>
           </div>
           <div>
-            <h1 className="text-xl text-orange-600 uppercase mb-1">
+            <h1 className="text-lg text-[#C27B7F] font-bold uppercase mb-1">
               Search Book
             </h1>
             <div className="form-control mb-2">
