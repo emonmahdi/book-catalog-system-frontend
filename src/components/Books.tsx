@@ -7,6 +7,8 @@
 import { IBooks } from "../types/globalTypes";
 import { useGetBooksQuery } from "../redux/api/apiSlice";
 import HomeBookCard from "./ui/HomeBookCard";
+import PrimaryBtn from "./ui/PrimaryBtn";
+import { Link } from "react-router-dom";
 
 export default function Books() {
   const { data } = useGetBooksQuery(undefined);
@@ -27,12 +29,19 @@ export default function Books() {
   const randomBooks = shuffledData.slice(0, 6);
 
   return (
-    <div className="text-center py-8">
-      <h2 className="font-bold text-3xl">Our Latest Books</h2>
-      <div className="grid grid-cols-12 gap-4 py-8 px-8">
+    <div className="text-center py-8 container mx-auto">
+      <h2 className="font-bold text-3xl">
+        Our <span style={{ color: "#C27B7F" }}>Latest</span> Books
+      </h2>
+      <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 py-16 ">
         {randomBooks?.map((book: IBooks) => (
           <HomeBookCard book={book} key={book.title} />
         ))}
+      </div>
+      <div>
+        <Link to="/all-books">
+          <PrimaryBtn>All Books</PrimaryBtn>
+        </Link>
       </div>
     </div>
   );

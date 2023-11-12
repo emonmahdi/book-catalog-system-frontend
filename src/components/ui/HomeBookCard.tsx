@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { addToWishlist } from "../../redux/features/wishlist/wishlistSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrimaryBtn from "./PrimaryBtn";
 
 interface iProps {
   book: IBooks;
@@ -22,8 +23,8 @@ export default function HomeBookCard({ book }: iProps) {
   };
 
   return (
-    <div className="col-span-4 mb-8">
-      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="mb-8">
+      <div className="card card-compact lg:w-auto bg-base-100 shadow-xl">
         <Link to={`/book-details/${_id}`}>
           <figure>
             <img src={img} className="h-40" alt="Shoes" />
@@ -49,10 +50,15 @@ export default function HomeBookCard({ book }: iProps) {
           <div className="card-actions justify-center">
             <button
               onClick={() => handleWishlist(book)}
-              className="btn btn-primary"
+              className="btn"
+              style={{
+                backgroundColor: "#C27B7F",
+                color: "#fff",
+              }}
             >
               Add Book
             </button>
+            {/* <PrimaryBtn  onClick={() => handleWishlist(book)}> Add Book</PrimaryBtn> */}
           </div>
         </div>
       </div>
