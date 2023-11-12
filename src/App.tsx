@@ -5,6 +5,7 @@ import { useAppDispatch } from "./redux/hooks";
 import { setLoading, setUser } from "./redux/features/user/userSlice";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import './index.css'
 
 import "react-toastify/dist/ReactToastify.css";
 

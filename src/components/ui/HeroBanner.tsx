@@ -1,50 +1,45 @@
- 
-import bg from "../../assets/images/bg-1.jpg"; 
+// import bg from "../../assets/images/bg-1.jpg";
 import { Link } from "react-router-dom";
+import PrimaryBtn from "./PrimaryBtn";
 
-export default function HeroBanner() { 
+export default function HeroBanner() {
   return (
-    <div>
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage: `url(${bg})`,
-          backgroundPosition: "center top",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">
-              Welcome to our awesome Book Catalog
-            </h1>
-            <p className="mb-5">
-              There are lots of book here. You can choose any kind of book and
-              read. Every latest book available ours.
+    <div
+      style={{
+        // backgroundImage: `url(${bg})`,
+        backgroundColor: "#F5EBE6",
+        backgroundPosition: "center top",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "#2F4858",
+      }}
+    >
+      <div className="">
+        <div className="hero-overlay"></div>
+        <div className="text-center">
+          <div className="lg:w-[75%] mx-auto max-w-100">
+            <p
+              style={{ color: "#C27B7F", fontWeight: "bold", fontSize: "15px" }}
+            >
+              LET'S MAKE THE BEST INVESTMENT
             </p>
-            <Link to="/all-books">
-              <button className="btn btn-primary">All Books</button>
-            </Link>
+            <h1 className="mb-5 text-5xl font-bold">
+              There Is No Friend As Loyal As A Book
+            </h1>
+            <p className="mb-5 w-50">
+              Books substantially impact every person's life because they offer
+              them access to a world of creativity, educate them about the
+              outside world, improve their reading, writing, and speaking
+              skills, and hone their intellect and memories.
+            </p>
 
-            {/* redux */}
-            {/* <div className="mt-12 py-12">
-              <button
-                onClick={() => dispatch(increment())}
-                className="btn btn-primary"
-                aria-label="Increment value"
-              >
-                Increment
-              </button>
-              <span className="px-4">{count}</span>
-              <button
-                onClick={() => dispatch(decrement())}
-                className="btn btn-secondary"
-                aria-label="Decrement value"
-              >
-                Decrement
-              </button>
-            </div> */}
-            {/* end */}
+            <Link to="/all-books">
+              <PrimaryBtn>All Books</PrimaryBtn>
+            </Link>
           </div>
         </div>
       </div>
