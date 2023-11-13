@@ -25,11 +25,6 @@ export default function AllBooks() {
     const searchTerm = e.target.value;
     dispatch(setSearchTerm(searchTerm));
   };
-
-  // search filtered by title
-  // const filteredData = data?.data?.filter((item: { title: string }) =>
-  //   item.title.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
   const filteredData = data?.data?.filter(
     (item: { title: string; author: string; genre: string }) => {
       const itemValues = Object.values(item).map((value) =>
@@ -42,12 +37,10 @@ export default function AllBooks() {
     }
   );
 
-  // filtering
-
   return (
     <div>
       <Navbar />
-      <div className="grid md:grid-cols-12 md:max-w-7xl mx-auto relative mt-4 sm:px-16">
+      <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-12 mt-4 px-16">
         <div
           style={{
             background: "#F5EBE6",
@@ -55,7 +48,7 @@ export default function AllBooks() {
             overflow: "hidden",
             margin: "0 auto",
           }}
-          className="col-span-3 mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]"
+          className="left-col-3 col-span-3 md:col-span-2 lg:col-span-3 bg-blue-500 md:mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start md:sticky top-16 h-[calc(100vh-80px)] mx-auto"
         >
           <h2 className="text-2xl text-center">
             Total Book : {data?.data?.length}
@@ -73,16 +66,19 @@ export default function AllBooks() {
               <input
                 type="text"
                 placeholder="search ex.name, author.."
-                className="input input-bordered w-24 md:w-auto"
+                className="input input-bordered  md:w-auto"
                 onChange={handleSearchChange}
               />
             </div>
           </div>
         </div>
-        <div className="col-span-9 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mx-auto py-16">
-          {filteredData?.map((book: IBooks) => (
-            <BookCard book={book} key={book.title} />
-          ))}
+        {/* right column */}
+        <div className="right-col-9 col-span-3 md:col-span-3 lg:col-span-9 mx-auto">
+          <div className="col-span-9 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mx-auto py-16">
+            {filteredData?.map((book: IBooks) => (
+              <BookCard book={book} key={book.title} />
+            ))}
+          </div>
         </div>
       </div>
       {/* <div className="text-center py-8">
