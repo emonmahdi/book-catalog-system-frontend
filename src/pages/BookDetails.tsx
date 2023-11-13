@@ -66,12 +66,14 @@ export default function BookDetails() {
 
   return (
     <div>
-      <div className="flex max-w-7xl mx-auto items-center border-b border-gray-300 pb-8 px-32">
-        <div className="w-[50%]">
-          <img src={product?.img} alt="" />
+      <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 border-b border-gray-300 px-32 items-center justify-center pb-8">
+        {/* left column */}
+        <div className="">
+          <img src={product?.img} alt="book image" className="mx-auto " />
         </div>
-        <div className="w-[50%] space-y-3">
-          <h1 className="text-3xl font-semibold">{product?.title}</h1>
+        {/* right column */}
+        <div className="space-y-3 ">
+          <h1 className="text-3xl font-semibold lg:mt-8">{product?.title}</h1>
           <p>
             by -{" "}
             <span className="text-blue-600 font-bold px-2">
@@ -94,24 +96,32 @@ export default function BookDetails() {
             </Link>
             <button
               onClick={() => handleDelete(product?._id)}
-              className="btn btn-error"
+              className="btn btn-error inline-block lg:mt-12"
             >
               Delete Book
             </button>
           </div>
         </div>
       </div>
-      <div className="flex max-w-12xl mx-auto items-center border-gray-300 pb-8 px-32 pt-4">
-        <form onSubmit={handleSubmit} className="w-[75%] flex items-center">
+
+      {/*  Review Box */}
+      <div className="flex mx-auto items-center border-gray-300 pb-8 px-16 pt-4">
+        <form onSubmit={handleSubmit} className="sm:w-[50%] flex items-center">
           <textarea
-            className="textarea textarea-primary w-[75%]"
+            className="textarea textarea-primary sm:w-[100%]"
             placeholder="Review"
             onChange={(e) => setInputValue(e.target.value)}
             value={inputValue}
           ></textarea>
           <button
             type="submit"
-            className="btn bg-primary p-4 rounded-lg ml-2 cursor-pointer"
+            className="btn rounded-lg cursor-pointer"
+            style={{
+              background: "#C27B7F",
+              color: "#fff",
+              display: "block",
+              margin: "15px auto",
+            }}
           >
             <FiSend className="text-white" />
           </button>

@@ -24,7 +24,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="px-20">
+    <div className="sm:px-20 px-4">
       <div className="navbar bg-base-100">
         <div className="flex-1">
           <Link to="/">
