@@ -24,11 +24,13 @@ export default function Navbar() {
   };
 
   return (
-    <div>
+    <div className="px-20">
       <div className="navbar bg-base-100">
         <div className="flex-1">
           <Link to="/">
-            <a className="btn btn-ghost normal-case text-xl">Book Catalog</a>
+            <a className="text-xl font-bold">
+              Book <span className="text-[#C27B7F]">Mohol</span>
+            </a>
           </Link>
         </div>
         <ul className="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box">

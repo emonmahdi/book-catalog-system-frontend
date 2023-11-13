@@ -50,6 +50,8 @@ import { useAddBookMutation } from "../redux/api/apiSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import img from "./../assets/images/open-book.png";
+
 export default function AddNewBook() {
   interface Book {
     title: string;
@@ -84,7 +86,7 @@ export default function AddNewBook() {
   });
 
   const [addBook, { isLoading }] = useAddBookMutation();
-  console.log(isLoading)
+  console.log(isLoading);
   // const date = new Date();
   // console.log(date);
   // Create a new Date object representing the current date and time
@@ -112,65 +114,79 @@ export default function AddNewBook() {
     });
   };
   return (
-    <>
+    <div className="">
       <Navbar />
       <ToastContainer />
-      <div>
-        <h3 className="text-center text-xl text-purple-600 font-bold">
-          Add New Book
-        </h3>
-      </div>
-      <div className="w-[50%] mx-auto">
-        <form onSubmit={handleSubmit}>
-          <div className="py-2">
-            <label>Title:</label>
-            <input
-              type="text"
-              className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              placeholder="book title"
-              required
+      <div className="py-12 bg-[#F5EBE6] h-screen">
+        <div>
+          <h3 className="text-center text-3xl font-bold flex items-center justify-center">
+            Add New <span className="text-[#C27F7B]"> Book</span>{" "}
+            <img
+              src={img}
+              alt="book"
+              style={{
+                width: "40px",
+                height: "40px",
+                display: "inline-block",
+                margin: "0 10px",
+              }}
             />
-          </div>
-          <div className="py-2">
-            <label>Author:</label>
-            <input
-              type="text"
-              className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
-              name="author"
-              value={formData.author}
-              onChange={handleChange}
-              placeholder="Author name"
-              required
-            />
-          </div>
-          <div className="py-2">
-            <label>Image:</label>
-            <input
-              type="text"
-              className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
-              name="img"
-              value={formData.img}
-              onChange={handleChange}
-              placeholder="Image Link here"
-              required
-            />
-          </div>
-          <div className="py-2">
-            <label>Genre:</label>
-            <input
-              type="text"
-              className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
-              name="genre"
-              value={formData.genre}
-              onChange={handleChange}
-              placeholder="Genre"
-              required
-            />
-          </div>
-          {/* <div className="mb-4">
+          </h3>
+        </div>
+        <div className="w-[50%] mx-auto">
+          <form
+            onSubmit={handleSubmit}
+            className="border-2 border-solid border-[#C27F7B] rounded p-4 my-4"
+          >
+            <div className="py-2">
+              <label className="font-bold">Title:</label>
+              <input
+                type="text"
+                className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                placeholder="book title"
+                required
+              />
+            </div>
+            <div className="py-2">
+              <label className="font-bold">Author:</label>
+              <input
+                type="text"
+                className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
+                name="author"
+                value={formData.author}
+                onChange={handleChange}
+                placeholder="Author name"
+                required
+              />
+            </div>
+            <div className="py-2">
+              <label className="font-bold">Image:</label>
+              <input
+                type="text"
+                className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
+                name="img"
+                value={formData.img}
+                onChange={handleChange}
+                placeholder="Image Link here"
+                required
+              />
+            </div>
+            <div className="py-2">
+              <label className="font-bold">Genre:</label>
+              <input
+                type="text"
+                className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
+                name="genre"
+                value={formData.genre}
+                onChange={handleChange}
+                placeholder="Genre"
+                required
+              />
+            </div>
+            {/* <div className="mb-4">
             <label>Publication Date:</label>
             <input
               type="date"
@@ -181,11 +197,21 @@ export default function AddNewBook() {
               required
             />
           </div> */}
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="btn"
+              style={{
+                background: "#C27B7F",
+                color: "#fff",
+                display: "block",
+                margin: "15px auto",
+              }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

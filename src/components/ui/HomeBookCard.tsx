@@ -6,7 +6,6 @@ import { useAppDispatch } from "../../redux/hooks";
 import { addToWishlist } from "../../redux/features/wishlist/wishlistSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PrimaryBtn from "./PrimaryBtn";
 
 interface iProps {
   book: IBooks;

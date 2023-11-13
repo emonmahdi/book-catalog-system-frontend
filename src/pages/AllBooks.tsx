@@ -47,10 +47,15 @@ export default function AllBooks() {
   return (
     <div>
       <Navbar />
-      <div className="grid grid-cols-12 max-w-7xl mx-auto relative mt-4">
+      <div className="grid md:grid-cols-12 md:max-w-7xl mx-auto relative mt-4 sm:px-16">
         <div
-          style={{ background: "#F5EBE6" }}
-          className="col-span-3 z mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]"
+          style={{
+            background: "#F5EBE6",
+            width: "100%",
+            overflow: "hidden",
+            margin: "0 auto",
+          }}
+          className="col-span-3 mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]"
         >
           <h2 className="text-2xl text-center">
             Total Book : {data?.data?.length}
@@ -67,14 +72,14 @@ export default function AllBooks() {
             <div className="form-control mb-2">
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="search ex.name, author.."
                 className="input input-bordered w-24 md:w-auto"
                 onChange={handleSearchChange}
               />
             </div>
           </div>
         </div>
-        <div className="col-span-9 grid grid-cols-2 gap-10 pb-20">
+        <div className="col-span-9 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mx-auto py-16">
           {filteredData?.map((book: IBooks) => (
             <BookCard book={book} key={book.title} />
           ))}
