@@ -1,6 +1,6 @@
- 
 import Books from "../components/Books";
-import HeroBanner from "../components/ui/HeroBanner"; 
+import NewReleaseBook from "../components/NewRelaseBook";
+import HeroBanner from "../components/ui/HeroBanner";
 import Footer from "./Footer";
 
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
     <div>
       <HeroBanner />
       <Books />
+      <NewReleaseBook />
       <Footer />
     </div>
   );

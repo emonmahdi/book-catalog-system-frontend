@@ -18,7 +18,7 @@ export default function HomeBookCard({ book }: iProps) {
 
   const handleWishlist = (book: IBooks) => {
     dispatch(addToWishlist(book));
-    toast("Add book wishlist!");
+    toast("Add book wishlist Successfully!");
   };
 
   return (

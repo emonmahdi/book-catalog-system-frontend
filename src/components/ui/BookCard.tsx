@@ -17,7 +17,7 @@ export default function BookCard({ book }: iProps) {
 
   const dispatch = useAppDispatch();
 
-  const handleWishlist = (book: IBooks) => {
+  const handleWishlistAll = (book: IBooks) => {
     dispatch(addToWishlist(book));
     toast("Add book wishlist!");
   };
@@ -50,7 +50,7 @@ export default function BookCard({ book }: iProps) {
             </p>
             <div className="card-actions justify-center">
               <button
-                onClick={() => handleWishlist(book)}
+                onClick={() => handleWishlistAll(book)}
                 className="btn"
                 style={{
                   background: "#C27B7F",
