@@ -17,7 +17,6 @@ export default function Navbar() {
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    console.log("log out");
     signOut(auth).then(() => {
       dispatch(setUser(null));
     });
@@ -80,7 +79,11 @@ export default function Navbar() {
                           <td>
                             <button
                               onClick={() => dispatch(finishWishlist(book))}
-                              className="btn btn-primary btn-sm"
+                              className="btn"
+                              style={{
+                                background: "#C27B7F",
+                                color: "#fff",
+                              }}
                             >
                               Finish Read
                             </button>

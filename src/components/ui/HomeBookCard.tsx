@@ -55,7 +55,7 @@ export default function HomeBookCard({ book }: iProps) {
                 color: "#fff",
               }}
             >
-              Add Book
+              Add Book Cart
             </button>
             {/* <PrimaryBtn  onClick={() => handleWishlist(book)}> Add Book</PrimaryBtn> */}
           </div>

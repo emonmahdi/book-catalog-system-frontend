@@ -51,6 +51,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import img from "./../assets/images/open-book.png";
+import { useNavigate } from "react-router-dom";
 
 export default function AddNewBook() {
   interface Book {
@@ -74,7 +75,7 @@ export default function AddNewBook() {
     .toString()
     .padStart(2, "0")}`;
 
-  console.log(formattedDate);
+  // console.log(formattedDate);
 
   const [formData, setFormData] = useState<Book>({
     title: "",
@@ -87,10 +88,8 @@ export default function AddNewBook() {
 
   const [addBook, { isLoading }] = useAddBookMutation();
   console.log(isLoading);
-  // const date = new Date();
-  // console.log(date);
-  // Create a new Date object representing the current date and time
-  // Output will be in the format 'YYYY-MM-DD'
+
+  const navigate = useNavigate();
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -102,8 +101,7 @@ export default function AddNewBook() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     addBook(formData);
-    console.log(formData);
-    toast("Add new book successfully");
+
     setFormData({
       title: "",
       author: "",
@@ -112,6 +110,7 @@ export default function AddNewBook() {
       publication_date: "",
       reviews: [],
     });
+    toast("Add new book successfully") && navigate("/");
   };
   return (
     <div className="">
