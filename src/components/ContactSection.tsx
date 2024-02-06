@@ -1,3 +1,9 @@
+import {
+  FaFacebookSquare,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 const btnStyle = {
   border: "none",
   background: "#C27B7F",
@@ -7,12 +13,12 @@ const btnStyle = {
   display: "inline-block",
 };
 
-interface IContact {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+// interface IContact {
+//   name: string;
+//   email: string;
+//   subject: string;
+//   message: string;
+// }
 
 const ContactSection = () => {
   const handleSubmit = () => {
@@ -25,8 +31,8 @@ const ContactSection = () => {
         <h6>Contact Us </h6>
         <h2 className="text-3xl font-bold mb-4">Write Anything</h2>
       </div>
-      <div className="flex">
-        <div className="w-full md:w-1/3 p-4 bg-[#F5EBE6] mx-8 rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 bg-[#F5EBE6] mx-8 rounded-lg">
           <div className="my-4">
             <h3 className="font-bold">Address: </h3>
             <p>Dhanmondi, Dhaka</p>
@@ -40,16 +46,34 @@ const ContactSection = () => {
             <p>bookcatalog@gmail.com</p>
           </div>
           <div className="my-4">
-            <h3 className="font-bold text-2xl">Connect with social links</h3>
-            <div className="flex items-center justify-between">
-              <p>facebook</p>
-              <p>linkedin</p>
-              <p>Instagram</p>
-              <p>Twitter</p>
+            <h3 className="font-bold text-2xl mb-4">
+              Connect with social links
+            </h3>
+            <div className="flex items-center">
+              <p className="mx-2">
+                <a href="/" className="text-2xl hover:text-[#C27B7F]">
+                  <FaFacebookSquare />
+                </a>
+              </p>
+              <p className="mx-4">
+                <a href="" className="text-2xl hover:text-[#C27B7F]">
+                  <FaLinkedin />
+                </a>
+              </p>
+              <p className="mx-4">
+                <a href="" className="text-2xl hover:text-[#C27B7F]">
+                  <FaInstagram />
+                </a>
+              </p>
+              <p className="mx-4">
+                <a href="" className="text-2xl hover:text-[#C27B7F]">
+                  <FaTwitter />
+                </a>
+              </p>
             </div>
           </div>
         </div>
-        <div className="w-full md:w-2/3 p-4 bg-[#F5EBE6] rounded-lg">
+        <div className="p-4 bg-[#F5EBE6] rounded-lg mx-8">
           <form onSubmit={handleSubmit} className="mx-auto my-4">
             <div>
               <input
